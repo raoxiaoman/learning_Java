@@ -1,0 +1,33 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+      <servlet-name>TestGenegicServlet</servlet-name>
+      <servlet-class>com.raohui.TestGenegicServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>TestGenegicServlet</servlet-name>
+      <url-pattern>/TestGenegicServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>TestServlet</servlet-name>
+      <servlet-class>com.raohui.TestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>TestServlet</servlet-name>
+      <url-pattern>/TestServlet</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+      <servlet-name>TestHttpServlet</servlet-name>
+      <servlet-class>com.raohui.TestHttpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>TestHttpServlet</servlet-name>
+      <url-pattern>/TestHttpServlet</url-pattern>
+  </servlet-mapping>
+
+</web-app>

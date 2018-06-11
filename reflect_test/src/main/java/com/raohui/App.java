@@ -60,6 +60,7 @@ public class App
                 System.out.println(parameterTypes[j]);
             }
             System.out.println("可能有的异常类型:");
+        
             Class<?>[] exceptionTypes = constructor.getExceptionTypes();
             for (int k = 0; k < exceptionTypes.length; k++) {
                 System.out.println(exceptionTypes[i]);
