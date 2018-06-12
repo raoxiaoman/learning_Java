@@ -21,13 +21,63 @@
       <url-pattern>/TestServlet</url-pattern>
   </servlet-mapping>
  
-  <servlet>
-      <servlet-name>TestHttpServlet</servlet-name>
-      <servlet-class>com.raohui.TestHttpServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>TestHttpServlet</servlet-name>
-      <url-pattern>/TestHttpServlet</url-pattern>
-  </servlet-mapping>
+  <!--使用@WebServlet标签代替-->
+  <!--<servlet>-->
+      <!--<servlet-name>TestHttpServlet</servlet-name>-->
+      <!--<servlet-class>com.raohui.TestHttpServlet</servlet-class>-->
+  <!--</servlet>-->
+  <!--<servlet-mapping>-->
+      <!--<servlet-name>TestHttpServlet</servlet-name>-->
+      <!--<url-pattern>/TestHttpServlet</url-pattern>-->
+  <!--</servlet-mapping>-->
 
+  <filter>
+      <filter-name>CharactorFilter</filter-name>
+      <filter-class>com.raohui.CharactorFilter</filter-class>
+      <init-param>
+          <param-name>encode</param-name>
+          <param-value>UTF-8</param-value>
+      </init-param>
+  </filter>
+  <filter-mapping>
+      <filter-name>CharactorFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!--使用@WebFilter标签代替-->
+  <!--<filter>-->
+      <!--<filter-name>TestFilter</filter-name>-->
+      <!--<filter-class>com.raohui.TestFilter</filter-class>-->
+      <!--<init-param>-->
+          <!--<param-name>count</param-name>-->
+          <!--<param-value>5000</param-value>-->
+      <!--</init-param>-->
+  <!--</filter>-->
+
+  <filter-mapping>
+      <filter-name>TestFilter</filter-name>
+      <url-pattern>/index.jsp</url-pattern>
+  </filter-mapping>
+
+  <!--使用@WebListener标签代替-->
+  <!--<listener>-->
+      <!--<listener-class>-->
+          <!--com.raohui.TestServletContextListener-->
+      <!--</listener-class>-->
+  <!--</listener>-->
+  <listener>
+      <listener-class>
+          com.raohui.TestHttpSessionListener
+      </listener-class>
+  </listener>
+  <listener>
+      <listener-class>
+          com.raohui.TestServletRequestListener
+      </listener-class>
+  </listener>
+  <listener>
+      <listener-class>
+          com.raohui.OnlineCountListener
+      </listener-class>
+  </listener>
 </web-app>

@@ -3,6 +3,6 @@
 <body>
 <h2>Hello World!</h2>
 <br>
-<span>你是第 <%=application.getAttribute("count")%> 游客! encode <%=application.getAttribute("encode")%></span>
+<span>当前在线用户个数:<%=application.getAttribute("num")%> 游客!</span>
 </body>
 </html>
