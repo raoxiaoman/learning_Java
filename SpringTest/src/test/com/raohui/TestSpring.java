@@ -54,7 +54,7 @@ public class TestSpring {
         aopTest.printThrowsException();
     }
     private void test4(){
-        StudentDao studentJDBCTemple = (StudentDao) context.getBean("studentJDBCTemple");
+        StudentDao studentJDBCTemple = (StudentDao) context.getBean("studentDao");
         studentJDBCTemple.create("20118","wudi",20,"man");
         List<Student> studentList = studentJDBCTemple.listsStudent();
         for (Student s:studentList){

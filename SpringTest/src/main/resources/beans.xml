@@ -109,11 +109,11 @@
     <!--</aop:config>-->
 
     <tx:annotation-driven/>
-    <!--<context:component-scan base-package="com.raohui"/>-->
+    <context:component-scan base-package="com.raohui"/>
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    <bean id="studentJDBCTemple" class="com.raohui.template.StudentJDBCTemplate">
+    <bean id="studentDao" class="com.raohui.template.StudentJDBCTemplate">
         <!--<property name="transactionManager" ref="transactionManager"/>-->
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
