@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.raohui.dao.base.studentBaseMapper">
+
+
+    <insert id="insertstudent" >
+        INSERT INTO `student`
+        (
+        <trim suffixOverrides=",">
+                    <if test="sno!=null">
+                        `sno`,
+                    </if>
+                    <if test="sname!=null">
+                        `sname`,
+                    </if>
+                    <if test="sage!=null">
+                        `sage`,
+                    </if>
+                    <if test="sex!=null">
+                        `sex`,
+                    </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+                <if test="sno!=null">
+                    #{sno},
+                </if>
+                <if test="sname!=null">
+                    #{sname},
+                </if>
+                <if test="sage!=null">
+                    #{sage},
+                </if>
+                <if test="sex!=null">
+                    #{sex},
+                </if>
+        </trim>
+        )
+    </insert>
+
+
+
+
+    <update id="updatestudent">
+        UPDATE `student`
+        SET
+        <trim suffixOverrides=",">
+            <if test="sname != null and sname!=''">
+                `sname` = #{sname},
+            </if>
+            <if test="sage != null">
+                `sage` = #{sage},
+            </if>
+            <if test="sex != null and sex!=''">
+                `sex` = #{sex},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+                `sno` = #{sno} and
+        </trim>
+    </update>
+
+
+
+    <resultMap type="com.raohui.model.student" id="studentMap">
+        <result property="sno" column="sno"/>
+        <result property="sname" column="sname"/>
+        <result property="sage" column="sage"/>
+        <result property="sex" column="sex"/>
+    </resultMap>
+
+
+    <select id="querystudent" resultMap="studentMap">
+        select
+        <include refid="baseResult"></include>
+        from  `student`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="sno != null and sno!=''">
+                `sno` = #{sno} and
+            </if>
+            <if test="sname != null and sname!=''">
+                `sname` = #{sname} and
+            </if>
+            <if test="sage != null">
+                `sage` = #{sage} and
+            </if>
+            <if test="sex != null and sex!=''">
+                `sex` = #{sex} and
+            </if>
+            <if test = "(_parameter instanceof com.raohui.model.student$QueryBuilder) == true">
+                <if test="snoList != null">
+                    `sno` in
+                    <foreach collection="snoList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzySno!=null and fuzzySno.size()>0">
+                    (
+                    <foreach collection="fuzzySno"  separator="or" item="item">
+                        `Sno` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzySno!=null and rightFuzzySno.size()>0">
+                    (
+                    <foreach collection="rightFuzzySno"  separator="or" item="item">
+                        `Sno` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="snameList != null">
+                    `sname` in
+                    <foreach collection="snameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzySname!=null and fuzzySname.size()>0">
+                    (
+                    <foreach collection="fuzzySname"  separator="or" item="item">
+                        `Sname` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzySname!=null and rightFuzzySname.size()>0">
+                    (
+                    <foreach collection="rightFuzzySname"  separator="or" item="item">
+                        `Sname` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="sageList != null">
+                    `sage` in
+                    <foreach collection="sageList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="sageSt !=null">
+                    `sage` >= #{sageSt} and
+                </if>
+                <if test="sageEd!=null">
+                    `sage` &lt;= #{sageEd} and
+                </if>
+                <if test="sexList != null">
+                    `sex` in
+                    <foreach collection="sexList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzySex!=null and fuzzySex.size()>0">
+                    (
+                    <foreach collection="fuzzySex"  separator="or" item="item">
+                        `Sex` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzySex!=null and rightFuzzySex.size()>0">
+                    (
+                    <foreach collection="rightFuzzySex"  separator="or" item="item">
+                        `Sex` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="querystudentLimit1" resultMap="studentMap">
+        select
+        <include refid="baseResult"></include>
+        from  `student`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="sno != null and sno!=''">
+                `sno` = #{sno} and
+            </if>
+            <if test="sname != null and sname!=''">
+                `sname` = #{sname} and
+            </if>
+            <if test="sage != null">
+                `sage` = #{sage} and
+            </if>
+            <if test="sex != null and sex!=''">
+                `sex` = #{sex} and
+            </if>
+            <if test = "(_parameter instanceof com.raohui.model.student$QueryBuilder) == true">
+                    <if test="snoList != null">
+                        `sno` in
+                        <foreach collection="snoList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzySno!=null and fuzzySno.size()>0">
+                    (
+                    <foreach collection="fuzzySno"  separator="or" item="item">
+                        `Sno` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzySno!=null and rightFuzzySno.size()>0">
+                    (
+                    <foreach collection="rightFuzzySno"  separator="or" item="item">
+                        `Sno` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="snameList != null">
+                        `sname` in
+                        <foreach collection="snameList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzySname!=null and fuzzySname.size()>0">
+                    (
+                    <foreach collection="fuzzySname"  separator="or" item="item">
+                        `Sname` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzySname!=null and rightFuzzySname.size()>0">
+                    (
+                    <foreach collection="rightFuzzySname"  separator="or" item="item">
+                        `Sname` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="sageList != null">
+                        `sage` in
+                        <foreach collection="sageList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="sageSt !=null">
+                    `sage` >= #{sageSt} and
+                </if>
+                <if test="sageEd!=null">
+                    `sage` &lt;= #{sageEd} and
+                </if>
+                    <if test="sexList != null">
+                        `sex` in
+                        <foreach collection="sexList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzySex!=null and fuzzySex.size()>0">
+                    (
+                    <foreach collection="fuzzySex"  separator="or" item="item">
+                        `Sex` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzySex!=null and rightFuzzySex.size()>0">
+                    (
+                    <foreach collection="rightFuzzySex"  separator="or" item="item">
+                        `Sex` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <sql id="allResult">
+        <trim suffixOverrides=",">
+        `sno`,
+        `sname`,
+        `sage`,
+        `sex`,
+        </trim>
+    </sql>
+
+
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof com.raohui.model.student$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    <include refid="allResult"></include>
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.sno==true">
+                        `sno`,
+                    </if>
+                    <if test="fetchFields.fetchFields.sname==true">
+                        `sname`,
+                    </if>
+                    <if test="fetchFields.fetchFields.sage==true">
+                        `sage`,
+                    </if>
+                    <if test="fetchFields.fetchFields.sex==true">
+                        `sex`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.sno==null">
+                        `sno`,
+                    </if>
+                    <if test="fetchFields.excludeFields.sname==null">
+                        `sname`,
+                    </if>
+                    <if test="fetchFields.excludeFields.sage==null">
+                        `sage`,
+                    </if>
+                    <if test="fetchFields.excludeFields.sex==null">
+                        `sex`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof com.raohui.model.student$QueryBuilder) == false" >
+                <include refid="allResult"></include>
+            </if>
+
+        </trim>
+    </sql>
+
+
+</mapper>

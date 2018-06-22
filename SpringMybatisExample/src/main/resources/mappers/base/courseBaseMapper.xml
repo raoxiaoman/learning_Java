@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.raohui.dao.base.courseBaseMapper">
+
+
+    <insert id="insertcourse" >
+        INSERT INTO `course`
+        (
+        <trim suffixOverrides=",">
+                    <if test="cno!=null">
+                        `cno`,
+                    </if>
+                    <if test="cname!=null">
+                        `cname`,
+                    </if>
+                    <if test="cpno!=null">
+                        `cpno`,
+                    </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+                <if test="cno!=null">
+                    #{cno},
+                </if>
+                <if test="cname!=null">
+                    #{cname},
+                </if>
+                <if test="cpno!=null">
+                    #{cpno},
+                </if>
+        </trim>
+        )
+    </insert>
+
+
+
+
+    <update id="updatecourse">
+        UPDATE `course`
+        SET
+        <trim suffixOverrides=",">
+            <if test="cname != null and cname!=''">
+                `cname` = #{cname},
+            </if>
+            <if test="cpno != null and cpno!=''">
+                `cpno` = #{cpno},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+                `cno` = #{cno} and
+        </trim>
+    </update>
+
+
+
+    <resultMap type="com.raohui.model.course" id="courseMap">
+        <result property="cno" column="cno"/>
+        <result property="cname" column="cname"/>
+        <result property="cpno" column="cpno"/>
+    </resultMap>
+
+
+    <select id="querycourse" resultMap="courseMap">
+        select
+        <include refid="baseResult"></include>
+        from  `course`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="cno != null and cno!=''">
+                `cno` = #{cno} and
+            </if>
+            <if test="cname != null and cname!=''">
+                `cname` = #{cname} and
+            </if>
+            <if test="cpno != null and cpno!=''">
+                `cpno` = #{cpno} and
+            </if>
+            <if test = "(_parameter instanceof com.raohui.model.course$QueryBuilder) == true">
+                <if test="cnoList != null">
+                    `cno` in
+                    <foreach collection="cnoList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCno!=null and fuzzyCno.size()>0">
+                    (
+                    <foreach collection="fuzzyCno"  separator="or" item="item">
+                        `Cno` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCno!=null and rightFuzzyCno.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCno"  separator="or" item="item">
+                        `Cno` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="cnameList != null">
+                    `cname` in
+                    <foreach collection="cnameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCname!=null and fuzzyCname.size()>0">
+                    (
+                    <foreach collection="fuzzyCname"  separator="or" item="item">
+                        `Cname` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCname!=null and rightFuzzyCname.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCname"  separator="or" item="item">
+                        `Cname` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="cpnoList != null">
+                    `cpno` in
+                    <foreach collection="cpnoList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCpno!=null and fuzzyCpno.size()>0">
+                    (
+                    <foreach collection="fuzzyCpno"  separator="or" item="item">
+                        `Cpno` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCpno!=null and rightFuzzyCpno.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCpno"  separator="or" item="item">
+                        `Cpno` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="querycourseLimit1" resultMap="courseMap">
+        select
+        <include refid="baseResult"></include>
+        from  `course`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="cno != null and cno!=''">
+                `cno` = #{cno} and
+            </if>
+            <if test="cname != null and cname!=''">
+                `cname` = #{cname} and
+            </if>
+            <if test="cpno != null and cpno!=''">
+                `cpno` = #{cpno} and
+            </if>
+            <if test = "(_parameter instanceof com.raohui.model.course$QueryBuilder) == true">
+                    <if test="cnoList != null">
+                        `cno` in
+                        <foreach collection="cnoList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyCno!=null and fuzzyCno.size()>0">
+                    (
+                    <foreach collection="fuzzyCno"  separator="or" item="item">
+                        `Cno` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCno!=null and rightFuzzyCno.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCno"  separator="or" item="item">
+                        `Cno` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="cnameList != null">
+                        `cname` in
+                        <foreach collection="cnameList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyCname!=null and fuzzyCname.size()>0">
+                    (
+                    <foreach collection="fuzzyCname"  separator="or" item="item">
+                        `Cname` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCname!=null and rightFuzzyCname.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCname"  separator="or" item="item">
+                        `Cname` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="cpnoList != null">
+                        `cpno` in
+                        <foreach collection="cpnoList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyCpno!=null and fuzzyCpno.size()>0">
+                    (
+                    <foreach collection="fuzzyCpno"  separator="or" item="item">
+                        `Cpno` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCpno!=null and rightFuzzyCpno.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCpno"  separator="or" item="item">
+                        `Cpno` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <sql id="allResult">
+        <trim suffixOverrides=",">
+        `cno`,
+        `cname`,
+        `cpno`,
+        </trim>
+    </sql>
+
+
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof com.raohui.model.course$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    <include refid="allResult"></include>
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.cno==true">
+                        `cno`,
+                    </if>
+                    <if test="fetchFields.fetchFields.cname==true">
+                        `cname`,
+                    </if>
+                    <if test="fetchFields.fetchFields.cpno==true">
+                        `cpno`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.cno==null">
+                        `cno`,
+                    </if>
+                    <if test="fetchFields.excludeFields.cname==null">
+                        `cname`,
+                    </if>
+                    <if test="fetchFields.excludeFields.cpno==null">
+                        `cpno`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof com.raohui.model.course$QueryBuilder) == false" >
+                <include refid="allResult"></include>
+            </if>
+
+        </trim>
+    </sql>
+
+
+</mapper>
