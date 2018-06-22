@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/mvc
-       http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/aop
-       http://www.springframework.org/schema/aop/spring-aop.xsd ">
-    <context:annotation-config/>
-    <aop:aspectj-autoproxy/>
-    <context:component-scan base-package="com.raohui"/>
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <!--配置properties-->
+ <!--配置properties-->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="order" value="2"/>
@@ -43,12 +31,13 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath*:mappers/studentMapper.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
         <!-- 分页插件 -->
     </bean>
     <bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <property name="basePackage" value="com.raohui.dao"/>
     </bean>
-
     <!-- 使用@Transactional进行声明式事务管理需要声明下面这行 -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
     <!-- 事务管理 -->
@@ -56,27 +45,5 @@
         <property name="dataSource" ref="dataSource"/>
         <!--提交失败是否回滚-->
         <property name="rollbackOnCommitFailure" value="true"/>
-    </bean>
-
-    <!--json数据自动序列和反序列化-->
-    <mvc:annotation-driven/>
-
-    <!--配置页面的路径-->
-    <mvc:resources mapping="/pages/**" location="/WEB-INF/pages/"/>
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
-
-    <!-- 异常处理 -->
-    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <prop key="java.lang.Exception">errors/error</prop>
-            </props>
-        </property>
-        <property name="defaultErrorView" value="errors/error"/>
-        <!-- 处理异常后打印日志 -->
-        <property name="warnLogCategory" value="ERROR"/>
     </bean>
 </beans>
