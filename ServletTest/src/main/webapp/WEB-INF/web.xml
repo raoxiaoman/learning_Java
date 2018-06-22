@@ -54,10 +54,10 @@
       <!--</init-param>-->
   <!--</filter>-->
 
-  <filter-mapping>
-      <filter-name>TestFilter</filter-name>
-      <url-pattern>/index.jsp</url-pattern>
-  </filter-mapping>
+  <!--<filter-mapping>-->
+      <!--<filter-name>TestFilter</filter-name>-->
+      <!--<url-pattern>/index.jsp</url-pattern>-->
+  <!--</filter-mapping>-->
 
   <!--使用@WebListener标签代替-->
   <!--<listener>-->

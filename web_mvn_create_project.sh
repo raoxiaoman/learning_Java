@@ -10,7 +10,7 @@ mvn archetype:generate -DgroupId=$1 -DartifactId=$2 -DarchetypeArtifactId=maven-
     -DarchetypeCatalog=local
     #-DarchetypeCatalog=internal
 
-python3 ./forWebProjectPom.py ./$2 pom.xml
+#python3 ./forWebProjectPom.py ./$2 pom.xml
 
 cd ./$2/src/main
 mkdir -p java/com/raohui

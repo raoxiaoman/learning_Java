@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.raohui.mapper.scMapper">
+  <resultMap id="BaseResultMap" type="com.raohui.model.sc">
+    <id column="sno" jdbcType="VARCHAR" property="sno" />
+    <id column="cno" jdbcType="VARCHAR" property="cno" />
+    <result column="grade" jdbcType="INTEGER" property="grade" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sno, cno, grade
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.raohui.model.scKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sc
+    where sno = #{sno,jdbcType=VARCHAR}
+      and cno = #{cno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.raohui.model.scKey">
+    delete from sc
+    where sno = #{sno,jdbcType=VARCHAR}
+      and cno = #{cno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.raohui.model.sc">
+    insert into sc (sno, cno, grade
+      )
+    values (#{sno,jdbcType=VARCHAR}, #{cno,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.raohui.model.sc">
+    insert into sc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        sno,
+      </if>
+      <if test="cno != null">
+        cno,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="cno != null">
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.raohui.model.sc">
+    update sc
+    <set>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sno = #{sno,jdbcType=VARCHAR}
+      and cno = #{cno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.raohui.model.sc">
+    update sc
+    set grade = #{grade,jdbcType=INTEGER}
+    where sno = #{sno,jdbcType=VARCHAR}
+      and cno = #{cno,jdbcType=VARCHAR}
+  </update>
+</mapper>

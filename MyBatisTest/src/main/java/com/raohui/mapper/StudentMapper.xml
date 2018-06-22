@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.raohui.mapper.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.raohui.model.Student">
+        <id column="sno" jdbcType="VARCHAR" property="sno"/>
+        <result column="sname" jdbcType="VARCHAR" property="sname"/>
+        <result column="sage" jdbcType="INTEGER" property="sage"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        sno, sname, sage, sex
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from student
+        where sno = #{sno,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAllInSnos" resultType="com.raohui.model.Student">
+        select * from student
+        where sno in
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+    <!--<select id="selectAll" resultType="com.raohui.model.Student">-->
+    <!--select-->
+    <!--<include refid="Base_Column_List"/>-->
+    <!--from student-->
+    <!--</select>-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from student
+        where sno = #{sno,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.raohui.model.Student">
+        insert into student (sno, sname, sage,
+                             sex)
+        values (#{sno,jdbcType=VARCHAR}, #{sname,jdbcType=VARCHAR}, #{sage,jdbcType=INTEGER},
+                #{sex,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.raohui.model.Student">
+        insert into student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sno != null">
+                sno,
+            </if>
+            <if test="sname != null">
+                sname,
+            </if>
+            <if test="sage != null">
+                sage,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sno != null">
+                #{sno,jdbcType=VARCHAR},
+            </if>
+            <if test="sname != null">
+                #{sname,jdbcType=VARCHAR},
+            </if>
+            <if test="sage != null">
+                #{sage,jdbcType=INTEGER},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.raohui.model.Student">
+        update student
+        <set>
+            <if test="sname != null">
+                sname = #{sname,jdbcType=VARCHAR},
+            </if>
+            <if test="sage != null">
+                sage = #{sage,jdbcType=INTEGER},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where sno = #{sno,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.raohui.model.Student">
+        update student
+        set sname = #{sname,jdbcType=VARCHAR},
+            sage  = #{sage,jdbcType=INTEGER},
+            sex   = #{sex,jdbcType=VARCHAR}
+        where sno = #{sno,jdbcType=VARCHAR}
+    </update>
+</mapper>
