@@ -6,7 +6,7 @@ public class BallDrop {
 
     public static void main(String[] args) {
         int floors = 100;
-        System.out.println(computeMinDropsInWorstCase1(floors)+"times");
+        computeMinDropsInWorstCase1(floors);
     }
     /*
      * 假设最坏的情况，小球下落的次数为x次，也就是为了测试出临界点N,一共做了x次实验，
@@ -31,19 +31,15 @@ public class BallDrop {
      * 比方说临界点是39,那次数为3+(39-27-1) = 14。
      * */
 
-     //若floors为n,就是求二元一次方程x2+x-2n=0解的上取整。
-    private static int computeMinDropsInWorstCase1(int floors) {
-        int a = 1;
-        int b =1;
-        int c = -2*floors;
-        double t = b*b - 4*a*c;
-
-        if(t>0){
-            double r1=(Math.sqrt(t)-b)*1.0/(2*a);
-            //double r2=(-(Math.sqrt(t))-b)*1.0/(2*a);(b=1 大于0 r2永远是负数)
-            return (int)Math.ceil(r1);
+    //若floors为n,就是求二元一次方程x2+x-2n=0解的上取整。
+    private static void computeMinDropsInWorstCase1(int floors) {
+        if(floors >=0 ){
+            //一元二次方程的解(sqrt(b*b-4ac)-b)/2a,因为b=1,大于0另一个解永远是负数,排除
+            Double times = Math.ceil((Math.sqrt(1+8*floors)-1)/2);
+            System.out.println(times.intValue()+"times");
         }else{
-            return -1;
+            System.out.println("floors的值需要大于0");
         }
+        
     }
 }
