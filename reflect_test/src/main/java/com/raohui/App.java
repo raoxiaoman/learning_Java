@@ -69,6 +69,7 @@ public class App
             try {
                 if(constructor.getParameterCount()  == 0){
                     relectTest2 =(RelectTest) constructor.newInstance();
+                    System.out.println(relectTest2 instanceof RelectTest);
                 }else if(constructor.getParameterCount() == 2){
                     relectTest2 = (RelectTest)constructor.newInstance(100,"raohui");
                 }
