@@ -1,6 +1,6 @@
 package com.raohui;
 
-public class JumpFloor {
+public class _8_JumpFloor {
     public int JumpFloor(int target) {
         if(target <= 0){
             return  -1;

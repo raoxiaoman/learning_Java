@@ -2,7 +2,7 @@ package com.raohui;
 
 import java.util.Stack;
 
-public class CreateQueueByStack {
+public class _5_CreateQueueByStack {
     Stack<Integer> stack1 = new Stack<Integer>();
     Stack<Integer> stack2 = new Stack<Integer>();
 

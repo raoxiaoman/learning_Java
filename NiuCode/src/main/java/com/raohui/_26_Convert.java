@@ -2,7 +2,7 @@ package com.raohui;
 
 import java.util.Stack;
 
-public class Convert_26 {
+public class _26_Convert {
     public TreeNode Convert(TreeNode pRootOfTree) {
         if(pRootOfTree == null){
             return null;

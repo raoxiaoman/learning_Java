@@ -1,6 +1,6 @@
 package com.raohui;
 
-public class JumpFloor2 {
+public class _9_JumpFloor2 {
     public int JumpFloorII(int target) {
         /*
         * 简便解法！！

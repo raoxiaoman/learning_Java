@@ -4,17 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-class ListNode {
-    int val;
-    ListNode next = null;
 
-    ListNode(int val) {
-        this.val = val;
-    }
-}
-
-
-public class TailToHeadList {
+public class _3_TailToHeadList {
     private ListNode head;
 
     public ListNode getHead() {
@@ -47,7 +38,7 @@ public class TailToHeadList {
     }
 
     public static void main(String[] args) {
-        TailToHeadList solution = new TailToHeadList();
+        _3_TailToHeadList solution = new _3_TailToHeadList();
         solution.createList();
         List<Integer> result = solution.printListFromTailToHead(solution.getHead());
         System.out.println(result);

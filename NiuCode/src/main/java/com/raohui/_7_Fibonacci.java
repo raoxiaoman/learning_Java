@@ -1,6 +1,6 @@
 package com.raohui;
 
-public class Fibonacci {
+public class _7_Fibonacci {
     public int Fibonacci(int n){
         int a = 1,b =0,c = 1;
         if(n==0){
@@ -16,7 +16,7 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        Fibonacci f = new Fibonacci();
+        _7_Fibonacci f = new _7_Fibonacci();
         System.out.println(f.Fibonacci(3));
     }
 }

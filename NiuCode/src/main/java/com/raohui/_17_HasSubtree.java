@@ -1,6 +1,6 @@
 package com.raohui;
 
-public class HasSubtree {
+public class _17_HasSubtree {
     public boolean HasSubtree(TreeNode root1,TreeNode root2) {
         boolean result = false;
         if(root1 == null || root2 == null){

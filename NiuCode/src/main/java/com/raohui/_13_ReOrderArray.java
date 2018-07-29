@@ -3,7 +3,7 @@ package com.raohui;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ReOrderArray {
+public class _13_ReOrderArray {
     public void reOrderArray(int [] array) {
         Queue<Integer> queue1 = new LinkedList<>();
         Queue<Integer> queue2 = new LinkedList<>();

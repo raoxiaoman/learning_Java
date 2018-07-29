@@ -2,7 +2,7 @@ package com.raohui;
 
 import java.util.ArrayList;
 
-public class FindPath_24 {
+public class _24_FindPath {
     ArrayList<ArrayList<Integer>> lists = new ArrayList<>();
     ArrayList<Integer> list = new ArrayList<>();
 

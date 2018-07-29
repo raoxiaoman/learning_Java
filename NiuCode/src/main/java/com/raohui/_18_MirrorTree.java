@@ -1,6 +1,6 @@
 package com.raohui;
 
-public class MirrorTree {
+public class _18_MirrorTree {
     public void Mirror(TreeNode root) {
         if (root != null) {
             if (root.right != null || root.left != null) {

@@ -2,7 +2,7 @@ package com.raohui;
 
 import java.util.ArrayList;
 
-public class PrintMatrix {
+public class _19_PrintMatrix {
     public ArrayList<Integer> printMatrix(int [][] matrix) {
         ArrayList<Integer> list = new ArrayList<>();
         if(matrix == null || matrix.length == 0){

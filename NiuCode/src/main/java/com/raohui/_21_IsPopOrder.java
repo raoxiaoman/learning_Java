@@ -2,7 +2,7 @@ package com.raohui;
 
 import java.util.Stack;
 
-public class IsPopOrder_21 {
+public class _21_IsPopOrder {
     public boolean IsPopOrder(int [] pushA,int [] popA) {
         if(popA == null || popA.length == 0 || pushA == null || pushA.length == 0){
             return false;

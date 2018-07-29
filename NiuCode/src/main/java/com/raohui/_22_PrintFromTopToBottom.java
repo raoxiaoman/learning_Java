@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PrintFromTopToBottom_22 {
+public class _22_PrintFromTopToBottom {
     public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
         ArrayList<Integer> reList = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();

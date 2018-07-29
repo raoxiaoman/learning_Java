@@ -1,6 +1,6 @@
 package com.raohui;
 
-public class ListMerge {
+public class _16_ListMerge {
     public ListNode Merge(ListNode list1,ListNode list2) {
         ListNode current = null;
         ListNode head = null;

@@ -2,7 +2,7 @@ package com.raohui;
 
 import java.util.Arrays;
 
-public class MinNumberInRotateArray {
+public class _6_MinNumberInRotateArray {
     public int minNumberInRotateArray(int [] array) {
         if (array.length == 0){
             return  0;

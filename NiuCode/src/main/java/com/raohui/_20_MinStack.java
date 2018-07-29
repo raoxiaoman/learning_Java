@@ -2,7 +2,7 @@ package com.raohui;
 
 import java.util.Stack;
 
-public class MinStack {
+public class _20_MinStack {
     private Stack<Integer> dataStack = new Stack<>();
     private Stack<Integer> minStack = new Stack<>();
     public void push(int node) {

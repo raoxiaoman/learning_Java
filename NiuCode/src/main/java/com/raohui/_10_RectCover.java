@@ -3,7 +3,7 @@ package com.raohui;
 /**
  *
  * */
-public class RectCover {
+public class _10_RectCover {
     public int RectCover(int target) {
         if(target <= 0){
             return  -1;

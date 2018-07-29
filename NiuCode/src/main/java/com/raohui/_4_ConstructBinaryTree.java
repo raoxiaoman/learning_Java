@@ -2,13 +2,7 @@ package com.raohui;
 
 import java.util.Arrays;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) { val = x; }
-}
-public class ConstructBinaryTree {
+public class _4_ConstructBinaryTree {
     public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
         if(pre.length == 0 || in.length == 0){
            return null;

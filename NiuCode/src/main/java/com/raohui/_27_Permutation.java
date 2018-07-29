@@ -3,7 +3,7 @@ package com.raohui;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Permutation_27 {
+public class _27_Permutation {
     public ArrayList<String> Permutation(String str) {
         ArrayList<String> res = new ArrayList<>();
         //完整性判断

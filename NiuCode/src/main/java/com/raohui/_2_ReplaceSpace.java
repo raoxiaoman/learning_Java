@@ -1,6 +1,6 @@
 package com.raohui;
 
-public class ReplaceSpace {
+public class _2_ReplaceSpace {
     private String replaceSpace(StringBuffer str) {
         int count = 0;
         for(int i = 0;i<str.length();i++){
@@ -25,7 +25,7 @@ public class ReplaceSpace {
 
     public static void main(String[] args) {
 
-       String str =  new ReplaceSpace().replaceSpace(new StringBuffer("hello world"));
+       String str =  new _2_ReplaceSpace().replaceSpace(new StringBuffer("hello world"));
         System.out.println(str);
 
     }
