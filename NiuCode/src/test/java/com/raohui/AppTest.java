@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Unit test for simple TailToHeadList.
+ * Unit test for simple _3_TailToHeadList.
  */
 public class AppTest 
 {

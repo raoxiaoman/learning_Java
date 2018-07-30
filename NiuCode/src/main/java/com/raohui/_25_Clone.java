@@ -10,7 +10,7 @@ class RandomListNode {
     }
 }
 
-public class Clone_25 {
+public class _25_Clone {
     public RandomListNode Clone(RandomListNode pHead) {
         if (pHead == null) {
             return null;
