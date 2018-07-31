@@ -18,7 +18,6 @@ public class _34_FirstNotRepeatingChar {
         }
         for (int i = 0; i < chars.length; i++) {
            if(map.get(chars[i]) == 1){
-               System.out.println(i);
                return i;
            }
         }
