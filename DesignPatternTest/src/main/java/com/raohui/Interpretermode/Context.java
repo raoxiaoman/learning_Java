@@ -100,7 +100,7 @@ class ExpressionNode extends Node {
 
     //循环执行命令集合中的每一条命令
     public void execute() {
-        Iterator iterator = list.iterator();
+        Iterator<Node> iterator = list.iterator();
         while (iterator.hasNext()) {
             ((Node) iterator.next()).execute();
         }

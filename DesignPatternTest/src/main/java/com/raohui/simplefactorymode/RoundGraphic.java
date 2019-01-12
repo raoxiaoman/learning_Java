@@ -5,7 +5,7 @@ public class RoundGraphic implements Graphic {
     public void draw() {
         System.out.println("画圆形！");
     }
-
+    
     @Override
     public void delete() {
         System.out.println("删掉圆形!");

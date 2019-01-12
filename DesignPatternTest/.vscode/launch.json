@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - IteratorModeTest",
+            "request": "launch",
+            "mainClass": "com.raohui.iteratormode.IteratorModeTest",
+            "projectName": "DesignPatternTest"
+        }
+    ]
+}
