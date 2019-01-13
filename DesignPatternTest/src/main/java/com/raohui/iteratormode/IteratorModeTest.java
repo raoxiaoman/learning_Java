@@ -15,6 +15,7 @@ public class IteratorModeTest {
 
         AbstractObjectList list = new ProjectList(projects);
         AbstractIterator iterator = list.CreateIterator();
+        iterator = list.CreateInIterator();
 
         System.out.println("正向遍历");
         while(!iterator.isLast()){
@@ -52,6 +53,9 @@ abstract class AbstractObjectList {
     }
 
     public abstract AbstractIterator CreateIterator();
+    public  AbstractIterator CreateInIterator(){
+        return null;
+    }
 }
 
 class ProjectList extends AbstractObjectList {
@@ -62,6 +66,54 @@ class ProjectList extends AbstractObjectList {
     @Override
     public AbstractIterator CreateIterator() {
         return new ProjectListIterator(this);
+    }
+    public AbstractIterator CreateInIterator() {
+        return new ProjectListInIterator();
+    }
+
+    private class ProjectListInIterator implements AbstractIterator {
+        private int cursor1;
+        private int cursor2;
+
+        public ProjectListInIterator() {
+            cursor1 = 0;
+            cursor2 = objects.size() - 1;
+        }
+
+        @Override
+        public void next() {
+            if (cursor1 < objects.size()) {
+                cursor1++;
+            }
+        }
+
+        @Override
+        public Boolean isLast() {
+            return cursor1 == objects.size();
+        }
+
+        @Override
+        public void previous() {
+            if (cursor2 > -1) {
+                cursor2--;
+            }
+        }
+
+        @Override
+        public Boolean isFirst() {
+            return cursor2 == -1;
+        }
+
+        @Override
+        public Object getNextItem() {
+            return objects.get(cursor1);
+        }
+
+        @Override
+        public Object getPreviousIterm() {
+            return objects.get(cursor2);
+        }
+
     }
 }
 

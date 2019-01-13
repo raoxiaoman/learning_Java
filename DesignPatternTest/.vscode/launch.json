@@ -1,11 +1,23 @@
 {
     "configurations": [
+        
         {
             "type": "java",
             "name": "CodeLens (Launch) - IteratorModeTest",
             "request": "launch",
             "mainClass": "com.raohui.iteratormode.IteratorModeTest",
             "projectName": "DesignPatternTest"
+
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MediatorModeTest",
+            "request": "launch",
+            "mainClass": "com.raohui.mediatormode.MediatorModeTest",
+            "projectName": "DesignPatternTest"
+
         }
+
+
     ]
 }

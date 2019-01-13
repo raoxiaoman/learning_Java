@@ -8,7 +8,7 @@ public class SimpleFactoryModeTest {
     @Test
     public  void test(){
         try{
-            Graphic graphic = GraphicFactory.getGraphic("rorrund");
+            Graphic graphic = GraphicFactory.getGraphic("round");
             graphic.draw();
             graphic.delete();
         }catch (Exception e){
